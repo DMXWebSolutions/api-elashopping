@@ -12,7 +12,7 @@ class BirthdayController {
             return person
             
         } catch (error) {
-            console.log(error)
+            response.json({ error })
         }
     }
 }
