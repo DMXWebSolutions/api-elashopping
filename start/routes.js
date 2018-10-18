@@ -10,7 +10,7 @@ Route.get('/', () => {
 Route.get('/departaments', 'StoreController.getDepartments')
 Route.get('/stores/:departament', 'StoreController.getStoresByDepartaments')
 Route.get('/Stores/:id', 'StoresController.getStoreById')
-
 Route.post('/birthday', 'BirthdayController.store')
+Route.get('/subscribers', 'BirthdayController.getSubscribersList')
 
 
