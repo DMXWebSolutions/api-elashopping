@@ -10,8 +10,8 @@ Route.get('/', () => {
 Route.post('/users', 'UserController.create')
 Route.post('/sessions', 'SessionController.create')
 Route.get('/departaments', 'StoreController.getDepartments')
-Route.get('/stores/:departament', 'StoreController.getStoresByDepartaments')
-Route.get('/Stores/:id', 'StoresController.getStoreById')
+Route.get('/departaments/:id', 'StoreController.getStoresByDepartaments')
+Route.get('/stores/:id', 'StoreController.getStoresByDepartaments')
 Route.post('/birthday', 'BirthdayController.store')
 Route.get('/subscribers', 'BirthdayController.getSubscribersList')
 

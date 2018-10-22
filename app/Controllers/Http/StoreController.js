@@ -14,8 +14,16 @@ class StoreController {
             .select('ela_lojas.id', 'ela_lojas.nome', 'ela_loja_tipo.id_tipo')
             .from('ela_lojas')
             .innerJoin('ela_loja_tipo', 'ela_lojas.id', 'ela_loja_tipo.id_loja') 
-            .where('ela_loja_tipo.id_tipo', params.departament)
+            .where('ela_loja_tipo.id_tipo', params.id)
             .groupBy('nome')
+        return response.status(200).json({ stores })    
+    }
+
+    async getStoresById({ params, response}) {
+        const stores = await Database
+            .select('*')
+            .from('ela_lojas')
+            .where('ela_loja.id', params.id)
         return response.status(200).json({ stores })    
     }
 }
