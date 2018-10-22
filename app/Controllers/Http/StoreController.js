@@ -26,7 +26,6 @@ class StoreController {
         const stores = await Database
             .select('*')
             .from('ela_lojas')
-            .where('id', params.id, 'status')
             .where({
                 id: params.id,
                 status: 1,
