@@ -23,7 +23,7 @@ class StoreController {
         const stores = await Database
             .select('*')
             .from('ela_lojas')
-            .where('ela_loja.id', params.id)
+            .where('id', params.id)
         return response.status(200).json({ stores })    
     }
 }
