@@ -11,10 +11,13 @@ class StoreController {
 
     async getStoresByDepartaments({ params, response}) {
         const stores = await Database
-            .select('ela_lojas.id', 'ela_lojas.nome', 'ela_loja_tipo.id_tipo')
+            .select('ela_lojas.id', 'ela_lojas.nome', 'ela_loja_tipo.id_tipo', 'ela_lojas.status')
             .from('ela_lojas')
             .innerJoin('ela_loja_tipo', 'ela_lojas.id', 'ela_loja_tipo.id_loja') 
-            .where('ela_loja_tipo.id_tipo', params.id)
+            .where({
+                id_tipo: params.id,
+                status: 1
+            })
             .groupBy('nome')
         return response.status(200).json({ stores })    
     }
@@ -23,7 +26,11 @@ class StoreController {
         const stores = await Database
             .select('*')
             .from('ela_lojas')
-            .where('id', params.id)
+            .where('id', params.id, 'status')
+            .where({
+                id: params.id,
+                status: 1,
+            })
         return response.status(200).json({ stores })    
     }
 }
