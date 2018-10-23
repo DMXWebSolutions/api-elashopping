@@ -32,6 +32,19 @@ class StoreController {
             })
         return response.status(200).json({ stores })    
     }
+
+    async getStoresByFloor({ params, response}) {
+        const stores = await Database
+            .select('*')
+            .from('ela_lojas')
+            .where({
+                piso: params.piso,
+                status: 1,
+            })
+        return response.status(200).json({ stores })    
+    }
+
+    
 }
 
 module.exports = StoreController
