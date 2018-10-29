@@ -11,7 +11,7 @@ class StoreController {
 
     async getStoresByDepartaments({ params, response}) {
         const stores = await Database
-            .select('ela_lojas.id', 'ela_lojas.nome', 'ela_loja_tipo.id_tipo', 'ela_lojas.status')
+            .select('ela_lojas.id', 'ela_lojas.nome', 'ela_lojas.logotipo', 'ela_lojas.telefone', 'ela_lojas.site', 'ela_loja_tipo.id_tipo', 'ela_lojas.status')
             .from('ela_lojas')
             .innerJoin('ela_loja_tipo', 'ela_lojas.id', 'ela_loja_tipo.id_loja') 
             .where({
