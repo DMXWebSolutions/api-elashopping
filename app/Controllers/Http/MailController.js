@@ -3,7 +3,7 @@
 class MailController {
     async sendMail({ request, response}) {
         const Mail = use('Mail')
-        const data = request.only(["nome", "email", "mensagem", "destinatario", "assunto"])
+        const data = request.only(["nome", "email", "mensagem", "destinatario", "assunto", "loja"])
         try {
             await Mail.send('emails.contact', data, (message) => {
                 message
