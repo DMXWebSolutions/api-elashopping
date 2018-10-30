@@ -9,5 +9,4 @@ class UserController {
         return user;
     }
 }
-
 module.exports = UserController

@@ -3,12 +3,15 @@
 class MailController {
     async sendMail({ request, response}) {
         const Mail = use('Mail')
+        const data = request.only(["nome", "email", "mensagem", "destinatario"])
         try {
-            await Mail.raw('plain text email', (message) => {
-                message.from('suporte@dmxweb.com.br')
-                message.to('suporte@dmxweb.com.br')
+            await Mail.send('emails.contact', data, (message) => {
+                message
+                    .to('suporte@dmxweb.com.br')
+                    .from(data.destinatario)
+                    .subject('Contato')
             })
-            response.json({data: 'e-mail enviado com sucesso'})
+            response.json({data})
             
         } catch (error) {
             console.log(error)
