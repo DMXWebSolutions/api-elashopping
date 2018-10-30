@@ -7,7 +7,7 @@ class MailController {
         try {
             await Mail.send('emails.contact', data, (message) => {
                 message
-                    .to('suporte@dmxweb.com.br')
+                    .to('contato@elashopping.com.br')
                     .from(data.destinatario)
                     .subject(data.assunto)
             })
